@@ -8,7 +8,8 @@ import re
 import os
 import pymongo
 
-style={'padding-top':'10px', 'padding-bottom':'10px','padding-left': '10px','padding-right': '10px'}
+td_style={'padding-top':'10px', 'padding-bottom':'10px','padding-left': '10px','padding-right': '10px','color':'#21618C'}
+th_style={'padding-top':'10px', 'padding-bottom':'10px','padding-left': '10px','padding-right': '10px','color':'#D81C58'}
 
 def generate_table(deployed_data):
     print deployed_data
@@ -33,17 +34,17 @@ def generate_table(deployed_data):
         children=[
             html.Thead(
                 html.Tr([
-                    html.Th('Module', style=style),
+                    html.Th('Module', style=th_style),
                     #html.Th(''),
-                    html.Th('Buildnumber',style=style)])
+                    html.Th('Buildnumber',style=th_style)])
                 ), 
 
         # Body
             html.Tbody(
                 [html.Tr([
-                    html.Td(key,style=style),
+                    html.Td(key,style=td_style),
                     #html.Td(''),
-                    html.Td(value,style=style)
+                    html.Td(value,style=td_style)
                     ]) for key,value in simplified_dict.iteritems()]
                 )
     ],style={
@@ -51,7 +52,7 @@ def generate_table(deployed_data):
             'margin-right': 'auto',
             'padding-left': '50px',
             'padding-right': '50px',
-            'background-color': '#DAF7A6',
+            #'background-color': '#DAF7A6',
             'border': 'solid',
             'textAlign': 'left',
             #'height': '100px'
@@ -71,7 +72,7 @@ app.scripts.config.serve_locally = True
 
 colors = {
     'background': '#A3E4D7',
-    'text': '#1B4F72'
+    'text': '#FF5733'
 }
 with open('hosts') as fp:
     asap_hosts=fp.readlines()
@@ -89,10 +90,11 @@ all_options = {
 }
 
 app.layout = html.Div([
-    html.H1(children='Release Deployment History', style={'textAlign': 'center','color': colors['text']}),
+    #html.Div(style={'backgroudColor':'#AED6F1'}),
+    html.H1(children='Release Deployment History', style={'textAlign': 'center','color': colors['text'],'backgroudColor':'#AED6F1'}),
     #html.H1(children='Release Deployment History', style={'textAlign': 'center','color': colors['text'],'backgroundColor':colors['background']}),
     html.Div([
-        html.Div('Application Name', className='app_name'),
+        html.Div('Application Name', className='app_name',style={'color':'#597E16'}),
         html.Div(dcc.Dropdown(
             id='application-dropdown',
             options=[{'label': k, 'value': k} for k in all_options.keys()],
@@ -101,7 +103,7 @@ app.layout = html.Div([
         ]),
     html.Br(),
     html.Div([
-        html.Div('Environment', className='app_name'),
+        html.Div('Environment', className='app_name',style={'color':'#597E16'}),
         html.Div(dcc.Dropdown(id='environments-dropdown'))
         ]),
     #html.Br(),
