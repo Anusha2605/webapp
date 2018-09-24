@@ -8,8 +8,8 @@ import re
 import os
 import pymongo
 
-td_style={'padding-top':'10px', 'padding-bottom':'10px','padding-left': '10px','padding-right': '10px','color':'#21618C'}
-th_style={'padding-top':'10px', 'padding-bottom':'10px','padding-left': '10px','padding-right': '10px','color':'#D81C58'}
+td_style={'padding-top':'10px', 'padding-bottom':'10px','padding-left': '10px','padding-right': '10px','color':'#1A5276'}
+th_style={'padding-top':'10px', 'padding-bottom':'10px','padding-left': '10px','padding-right': '10px','color':'#BA4A00'}
 
 def generate_table(deployed_data):
     print deployed_data
@@ -72,10 +72,10 @@ app.scripts.config.serve_locally = True
 #app = dash.Dash('root-dir-name')  # the name of the folder containing your code and static folder.
 #app.css.append_css({'external_url': '/static/table_style.css'})
 #app.server.static_folder = 'static'  # if you run app.py from 'root-dir-name' you don't need to specify.
-colors = {
-    'background': '#A3E4D7',
-    'text': '#FF5733'
-}
+#colors = {
+ #   'background': '#A3E4D7',
+  #  'text': '#FF5733'
+#}
 with open('hosts') as fp:
     asap_hosts=fp.readlines()
 asap_env_list=[]
@@ -94,10 +94,10 @@ all_options = {
 app.layout = html.Div([
     html.Link(href='/static/table_style.css', rel='stylesheet'),
     #html.Div(style={'backgroudColor':'#AED6F1'}),
-    html.H1(children='Release Deployment History', style={'textAlign': 'center','color': colors['text']}),
+    html.H1(children='Release Deployment History', style={'textAlign': 'center','color': '#F39C12'}),
     #html.H1(children='Release Deployment History', style={'textAlign': 'center','color': colors['text'],'backgroundColor':colors['background']}),
     html.Div([
-        html.Div('Application Name', className='app_name',style={'color':'#597E16'}),
+        html.B(html.Div('Application Name', className='app_name',style={'color':'#597E16'})),
         html.Div(dcc.Dropdown(
             id='application-dropdown',
             options=[{'label': k, 'value': k} for k in all_options.keys()],
@@ -106,7 +106,7 @@ app.layout = html.Div([
         ]),
     html.Br(),
     html.Div([
-        html.Div('Environment', className='app_name',style={'color':'#597E16'}),
+        html.B(html.Div('Environment', className='app_name',style={'color':'#597E16'})),
         html.Div(dcc.Dropdown(id='environments-dropdown'))
         ]),
     #html.Br(),
