@@ -5,6 +5,10 @@
   border: solid;
   border-width: 0.2px;
 }
+.reaponsive-table th {
+  border: solid;
+  border-width: 0.2px;
+}
 
 .reaponsive-table tr:hover {
   background-color: grey;
@@ -12,4 +16,8 @@
 
 .reaponsive-table td:hover {
   background-color: yellow;
+}
+
+body {
+  'background-color':'blue';
 }
